@@ -1,73 +1,104 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Vibe Coding & Automation Masterclass 2026</title>
+    <title>AI Vibe Coding & Automation Masterclass 2026 - Nguyễn Phước Vĩnh Hưng</title>
+    <meta name="description" content="Học cách làm chủ AI và Automation để đột phá năng suất doanh nghiệp năm 2026.">
+    
+    <!-- Fonts & CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --apple-blue: #0071e3;
-            --apple-gray: #f5f5f7;
-            --festive-accent: #d70015;
+            --primary: #00ff41; /* Classic Matrix/Coding Green */
+            --bg-dark: #0a0a0a;
+            --accent: #ff0055;
+            --card-bg: #151515;
         }
+
         body {
-            background-color: #ffffff;
-            color: #1d1d1f;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-        .apple-glass {
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: saturate(180%) blur(20px);
-        }
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f5f5f7 100%);
-        }
-        .btn-primary {
-            background-color: #1d1d1f;
+            background-color: var(--bg-dark);
             color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Custom UI Elements */
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.15) 0%, transparent 70%);
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .btn-primary:hover {
-            background-color: #424245;
+
+        .module-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0, 255, 65, 0.2);
+        }
+
+        .btn-vibe {
+            background: var(--primary);
+            color: #000;
+            font-weight: 800;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-vibe:hover {
+            filter: brightness(1.1);
             transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
         }
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
-        .input-apple {
-            background-color: #f5f5f7;
-            border: 1px solid transparent;
+
+        .input-vibe {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
             transition: all 0.2s ease;
         }
-        .input-apple:focus {
-            background-color: #ffffff;
-            border-color: #0071e3;
-            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+
+        .input-vibe:focus {
+            border-color: var(--primary);
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
         }
-        /* Subtle Festive Particle Animation */
-        .sparkle {
-            position: fixed;
-            background: #d70015;
+
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--primary);
             border-radius: 50%;
-            pointer-events: none;
-            opacity: 0.15;
-            z-index: 1;
-            animation: sparkle-float linear infinite;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
         }
-        @keyframes sparkle-float {
-            0% { transform: translateY(0) scale(1); opacity: 0; }
-            20% { opacity: 0.2; }
-            100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .hidden-step { display: none; }
+        
+        /* Utility */
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #00ff41);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #ffffff; }
-        ::-webkit-scrollbar-thumb { background: #d1d1d6; border-radius: 5px; }
     </style>
 <script type="importmap">
 {
@@ -80,24 +111,325 @@
 </script>
 </head>
 <body>
-    <div id="root"></div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav fixed top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="mono font-bold text-xl tracking-tighter">
+                <span class="text-[#00ff41]">$</span> VIBE_CODING<span class="animate-pulse">_</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <div id="countdown" class="mono text-sm text-gray-400 flex gap-4">
+                    <!-- Countdown JS will inject here -->
+                </div>
+                <a href="#register" class="btn-vibe px-6 py-2 rounded-full text-xs">Đăng ký ngay</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-40 pb-20 overflow-hidden hero-glow">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-block px-4 py-1 border border-[#00ff41]/30 rounded-full text-[10px] mono text-[#00ff41] mb-8 uppercase tracking-widest">
+                Deployment 2026 // AI Automation
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-none tracking-tight">
+                AI VIBE <span class="text-gradient">CODING</span><br/>
+                <span class="text-gray-500">& AUTOMATION</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-medium">
+                Xây dựng hệ thống vận hành tự động bằng Generative AI. Không cần là lập trình viên chuyên nghiệp để làm chủ công nghệ mạnh nhất thế giới.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#register" class="btn-vibe px-10 py-5 rounded-2xl text-lg">Bắt đầu ngay</a>
+                <a href="#curriculum" class="px-10 py-5 rounded-2xl border border-white/10 hover:bg-white/5 transition-all mono text-sm flex items-center justify-center">Xem chương trình</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="py-32 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 text-center">
+                <h2 class="text-4xl font-bold mb-4 uppercase tracking-tighter">Chương trình đào tạo</h2>
+                <p class="text-gray-500 mono text-sm">8 HỌC PHẦN THỰC CHIẾN</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Modules -->
+                <div class="module-card p-8 rounded-3xl">
+                    <div class="text-[#00ff41] mono text-xs mb-6 font-bold">#01</div>
+                    <h3 class="text-xl font-bold mb-3">Hạ tầng AI Pro</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Thiết lập Google AI Pro (Gemini Advanced). Tặng 6 tháng sử dụng miễn phí.</p>
+                </div>
+                <div class="module-card p-8 rounded-3xl">
+                    <div class="text-[#00ff41] mono text-xs mb-6 font-bold">#02</div>
+                    <h3 class="text-xl font-bold mb-3">Prompting Nâng Cao</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Làm chủ Nano Banana & Gemini 3.0 Pro để tạo kết quả chính xác 99%.</p>
+                </div>
+                <div class="module-card p-8 rounded-3xl">
+                    <div class="text-[#00ff41] mono text-xs mb-6 font-bold">#03</div>
+                    <h3 class="text-xl font-bold mb-3">Chatbot Vibe</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Xây dựng trợ lý AI có tính cách, tư duy và khả năng chốt đơn tự động.</p>
+                </div>
+                <div class="module-card p-8 rounded-3xl">
+                    <div class="text-[#00ff41] mono text-xs mb-6 font-bold">#04</div>
+                    <h3 class="text-xl font-bold mb-3">Tri thức doanh nghiệp</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Tích hợp dữ liệu riêng biệt vào AI. Biến AI thành chuyên gia trong ngành.</p>
+                </div>
+                <!-- ... other modules can be added similarly -->
+                <div class="module-card p-8 rounded-3xl">
+                    <div class="text-[#00ff41] mono text-xs mb-6 font-bold">#05</div>
+                    <h3 class="text-xl font-bold mb-3">Landing Page Auto</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Tạo trang bán hàng trong 5 phút bằng AI Vibe Coding không cần code.</p>
+                </div>
+                <div class="module-card p-8 rounded-3xl">
+                    <div class="text-[#00ff41] mono text-xs mb-6 font-bold">#06</div>
+                    <h3 class="text-xl font-bold mb-3">Email Marketing AI</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Tự động hóa quy trình nuôi dưỡng và chăm sóc khách hàng 24/7.</p>
+                </div>
+                <div class="module-card p-8 rounded-3xl">
+                    <div class="text-[#00ff41] mono text-xs mb-6 font-bold">#07</div>
+                    <h3 class="text-xl font-bold mb-3">Hệ thống hóa</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Kết nối các công cụ AI thành một bộ máy làm việc thay con người.</p>
+                </div>
+                <div class="module-card p-8 rounded-3xl">
+                    <div class="text-[#00ff41] mono text-xs mb-6 font-bold">#08</div>
+                    <h3 class="text-xl font-bold mb-3">Live Masterclass</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Học trực tiếp qua Zoom 19:30 - 22:30 ngày 01/12/2025 cùng chuyên gia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content & Registration -->
+    <section class="py-32 bg-[#0d0d0d]">
+        <div class="max-w-4xl mx-auto px-6">
+            <div id="register" class="bg-black border border-white/10 rounded-[3rem] p-8 md:p-16 shadow-2xl">
+                
+                <!-- STEP 1: Registration Form -->
+                <div id="step-form">
+                    <div class="mb-12">
+                        <h2 class="text-3xl font-bold uppercase tracking-tighter mb-4">Ghi danh ngay hôm nay</h2>
+                        <p class="text-gray-500 mono text-sm uppercase tracking-widest">Ưu đãi giới hạn chỉ 19.000đ</p>
+                    </div>
+
+                    <form id="enrollmentForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" id="userName" required class="input-vibe w-full px-6 py-4 rounded-2xl font-bold" placeholder="HỌ VÀ TÊN">
+                            <input type="tel" id="userPhone" required class="input-vibe w-full px-6 py-4 rounded-2xl font-bold" placeholder="SỐ ĐIỆN THOẠI">
+                        </div>
+                        <input type="email" id="userEmail" required class="input-vibe w-full px-6 py-4 rounded-2xl font-bold" placeholder="ĐỊA CHỈ EMAIL">
+                        
+                        <div class="bg-white/5 p-8 rounded-[2rem] border border-white/5 space-y-4">
+                            <div class="flex justify-between items-center text-xs mono text-gray-600">
+                                <span>GIÁ GỐC</span>
+                                <span class="line-through">13.200.000đ</span>
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <span class="text-[#00ff41] font-bold text-xs mono">FLASH SALE</span>
+                                <div class="text-4xl font-black text-white">19.000đ</div>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="w-full btn-vibe py-6 rounded-2xl text-lg flex justify-center items-center gap-3">
+                            <span>TIẾP TỤC THANH TOÁN</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- STEP 2: Payment (QR) -->
+                <div id="step-payment" class="hidden-step text-center">
+                    <div class="mb-10">
+                        <div class="inline-block px-4 py-1 bg-white/5 rounded-full text-xs mono text-gray-400 mb-4">MÃ ĐƠN HÀNG: <span id="displayTxId" class="text-white font-bold"></span></div>
+                        <h2 class="text-2xl font-bold uppercase mb-2">Quét mã chuyển khoản</h2>
+                        <p class="text-gray-500 text-sm">Hệ thống sẽ tự động kích hoạt sau khi nhận được thanh toán.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-[2.5rem] inline-block mb-10 border-8 border-white/5 shadow-2xl">
+                        <img id="qrImage" src="" alt="QR Code" class="w-64 h-64 mx-auto">
+                    </div>
+
+                    <div class="space-y-4 text-left max-w-sm mx-auto mb-10">
+                        <div class="flex justify-between border-b border-white/10 pb-2 text-sm">
+                            <span class="text-gray-500 mono">Số tiền</span>
+                            <span class="font-bold text-[#00ff41]">19.000đ</span>
+                        </div>
+                        <div class="flex justify-between border-b border-white/10 pb-2 text-sm">
+                            <span class="text-gray-500 mono">Nội dung</span>
+                            <span id="displayContent" class="font-bold text-white uppercase"></span>
+                        </div>
+                    </div>
+
+                    <button id="verifyBtn" class="w-full bg-white/5 hover:bg-white/10 text-white py-5 rounded-2xl font-bold text-sm uppercase tracking-widest transition-all flex justify-center items-center gap-3 border border-white/10">
+                        <div id="verifyLoader" class="spinner hidden"></div>
+                        <span>Xác nhận đã chuyển khoản</span>
+                    </button>
+                    
+                    <div class="mt-8 flex items-center justify-center gap-2 text-[10px] mono text-[#00ff41] uppercase animate-pulse">
+                        <span class="w-1.5 h-1.5 bg-[#00ff41] rounded-full"></span>
+                        Đang lắng nghe giao dịch...
+                    </div>
+                </div>
+
+                <!-- STEP 3: Success -->
+                <div id="step-success" class="hidden-step text-center animate-in zoom-in duration-500">
+                    <div class="text-7xl mb-8">🚀</div>
+                    <h2 class="text-4xl font-black uppercase mb-6 tracking-tighter">XÁC NHẬN THÀNH CÔNG!</h2>
+                    <p class="text-gray-400 mb-10 max-w-sm mx-auto">Chào mừng bạn đã gia nhập hàng ngũ những người tiên phong AI. Bạn có một Email xác nhận đang trên đường tới.</p>
+                    
+                    <div class="bg-white/5 p-6 rounded-3xl border border-white/10 mb-10 text-left text-sm space-y-3">
+                        <p>✅ Đã nhận thanh toán cho đơn hàng <span id="finalTxId" class="font-bold text-[#00ff41]"></span></p>
+                        <p>✅ Đã gửi Email hướng dẫn chi tiết.</p>
+                        <p>✅ Đã gửi lời mời kết bạn Zalo từ Hưng NPV.</p>
+                    </div>
+
+                    <a href="https://zalo.me/g/eihcgv353" target="_blank" class="w-full bg-[#0068ff] text-white py-6 rounded-2xl font-black text-lg uppercase shadow-lg block">VÀO NHÓM ZALO LỚP HỌC</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
+            <div class="mono font-bold text-2xl tracking-tighter italic">HUNG NPV<span class="text-[#00ff41]">.</span></div>
+            <div class="text-gray-600 mono text-[10px] uppercase tracking-[0.3em]">
+                © 2026 DUHAVA // CODED BY AI VIBE
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
     <script>
-        function createFestiveSparkles() {
-            const container = document.body;
-            for (let i = 0; i < 15; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle';
-                const size = Math.random() * 3 + 1;
-                sparkle.style.width = `${size}px`;
-                sparkle.style.height = `${size}px`;
-                sparkle.style.left = `${Math.random() * 100}vw`;
-                sparkle.style.top = `${Math.random() * 100}vh`;
-                sparkle.style.animationDuration = `${Math.random() * 10 + 10}s`;
-                sparkle.style.animationDelay = `${Math.random() * 5}s`;
-                container.appendChild(sparkle);
+        // Constants & Config
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz08ONSuRvlxGBZWDyy4O-goMOcrXqfB2d-z8O076EBZGX2ueOjRoO850fQmVWvkrv-/exec';
+        const BANKING = {
+            account: "962476666688888",
+            bank: "BIDV",
+            amount: 19000
+        };
+        const TARGET_DATE = new Date('2025-12-01T19:30:00').getTime();
+
+        // State Management
+        let currentTxId = '';
+        let pollingInterval = null;
+
+        // Elements
+        const stepForm = document.getElementById('step-form');
+        const stepPayment = document.getElementById('step-payment');
+        const stepSuccess = document.getElementById('step-success');
+        const enrollmentForm = document.getElementById('enrollmentForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const dist = TARGET_DATE - now;
+            const targetEl = document.getElementById('countdown');
+            
+            if (dist < 0) {
+                targetEl.innerHTML = "KHÓA HỌC ĐÃ BẮT ĐẦU";
+                return;
+            }
+
+            const days = Math.floor(dist / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((dist % (1000 * 60)) / 1000);
+
+            targetEl.innerHTML = `
+                <div class="flex flex-col"><span class="text-white font-bold">${String(days).padStart(2,'0')}</span><span class="text-[8px]">NGÀY</span></div>
+                <div class="flex flex-col"><span class="text-white font-bold">${String(hours).padStart(2,'0')}</span><span class="text-[8px]">GIỜ</span></div>
+                <div class="flex flex-col"><span class="text-white font-bold">${String(minutes).padStart(2,'0')}</span><span class="text-[8px]">PHÚT</span></div>
+                <div class="flex flex-col"><span class="text-white font-bold">${String(seconds).padStart(2,'0')}</span><span class="text-[8px]">GIÂY</span></div>
+            `;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Form Handling
+        enrollmentForm.onsubmit = async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<div class="spinner"></div> ĐANG XỬ LÝ...';
+
+            currentTxId = 'VIBE' + Math.random().toString().slice(2, 8);
+            
+            const data = {
+                name: document.getElementById('userName').value,
+                phone: document.getElementById('userPhone').value,
+                email: document.getElementById('userEmail').value,
+                transactionId: currentTxId,
+                amount: BANKING.amount,
+                status: 'UNPAID'
+            };
+
+            try {
+                // Submit to Google Sheets (CORS-friendly ping)
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify(data)
+                });
+
+                // Transition UI
+                showPaymentStep();
+            } catch (err) {
+                console.error(err);
+                alert('Có lỗi xảy ra khi lưu thông tin. Bạn hãy liên hệ trực tiếp zalo: 0962.47.6666');
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'THỬ LẠI';
+            }
+        };
+
+        function showPaymentStep() {
+            stepForm.classList.add('hidden-step');
+            stepPayment.classList.remove('hidden-step');
+            
+            document.getElementById('displayTxId').innerText = currentTxId;
+            document.getElementById('displayContent').innerText = currentTxId;
+            
+            const qrUrl = `https://qr.sepay.vn/img?acc=${BANKING.account}&bank=${BANKING.bank}&amount=${BANKING.amount}&des=${currentTxId}&template=compact`;
+            document.getElementById('qrImage').src = qrUrl;
+
+            // Start Polling
+            startPaymentPolling();
+        }
+
+        async function checkPayment() {
+            try {
+                const res = await fetch(`${SCRIPT_URL}?txId=${currentTxId}`);
+                const statusData = await res.json();
+                if (statusData.status === 'PAID') {
+                    showSuccess();
+                }
+            } catch (e) {
+                console.log('Chưa nhận được thanh toán...');
             }
         }
-        createFestiveSparkles();
+
+        function startPaymentPolling() {
+            if (pollingInterval) clearInterval(pollingInterval);
+            pollingInterval = setInterval(checkPayment, 10000);
+        }
+
+        function showSuccess() {
+            if (pollingInterval) clearInterval(pollingInterval);
+            stepPayment.classList.add('hidden-step');
+            stepSuccess.classList.remove('hidden-step');
+            document.getElementById('finalTxId').innerText = currentTxId;
+            window.scrollTo({ top: document.getElementById('register').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        document.getElementById('verifyBtn').onclick = () => {
+            const loader = document.getElementById('verifyLoader');
+            loader.classList.remove('hidden');
+            checkPayment().finally(() => {
+                setTimeout(() => loader.classList.add('hidden'), 2000);
+            });
+        };
     </script>
 </body>
 </html>
